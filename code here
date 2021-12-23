@@ -1,0 +1,36 @@
+let str1= "There are twenty-four hours in a day, 30 days in a month, and 12 months in the calendar year."
+let str2="There are Twenty-Four hours in a day. A year has 14 months."
+
+let correctAns=str1.split(" ").join(",").split(".").join(",").split(",")
+let candidatesAns=str2.split(" ").join(",").split(".").join(",").split(",")
+let totalMarks=0;
+let candidatesMark=0;
+for(let i=0;i<correctAns.length;i++){
+  if(!isNaN(correctAns[i]) && correctAns[i]!=""){
+    totalMarks+=4;
+    console.log(4)
+  }else if(correctAns[i].length>7){
+    totalMarks+=3;
+    console.log(3)
+  }else if(correctAns[i].length>=5){
+    totalMarks+=1;
+    console.log(1)
+  }
+  for(let j=0;j<candidatesAns.length;j++){
+    if(candidatesAns[j]==correctAns[i] &&(!isNaN(correctAns[i]) && correctAns[i]!="")){
+      candidatesMark+=4;
+    }else if(candidatesAns[j].toLowerCase()==correctAns[i].toLowerCase()&&(correctAns[i].length>7)){
+      candidatesMark+=3
+    }else if(candidatesAns[j].toLowerCase()==correctAns[i].toLowerCase()&&(correctAns[i].length>=5)){
+      candidatesMark+=1;
+    }
+    
+  }
+}
+
+console.log(totalMarks)
+console.log("point scored by candidate is : "+candidatesMark + " out of " + totalMarks)
+console.log("percentage is "+ candidatesMark*100/totalMarks)
+
+
+//errors in testdata is that calender holding 1 point instead of 3
